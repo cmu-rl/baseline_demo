@@ -1,0 +1,81 @@
+Some Example Experiments:
+
+
+As a preliminary bit of work for a pilot study we would like to investigate the following areas.
+* Lifelong learning
+* Hierarchical Inverse Reinforcement Learning
+* Multiagent Inverse Reinforcement Learning
+* Language Grounding
+* Planning (Grounded or otherwise)
+* Multiagent Collaboration and Communication
+* Hierarchical Behavioral Cloning
+* Actionless Imitation Learning
+* Unsupervised Option Extraciton
+
+
+
+Pilot Experiments:
+	*  (Not guarenteed to be included in the final server )
+	** We mark the experiments that will not actually be behaviroally cloned, but just shown in the demo video with a [D]
+
+1. Single Player Tree Chopping (Warm Up) [R, we will actually try and clone this data]
+	Dom: Imitation Learning
+	Desc: Players engage in chopping down a fixed number of trees to complete the challenge. 
+		Each time a player spawns in a random survival world, and recording is finished upon completion of the goal.
+	Technical Notes: It would be nice if we could mark when a player chops a tree down, and when they compelte the task.
+		If this is too much work with the demo video deadline approaching, that's fine, we don't need to actually 
+		show graphs in the demo.
+
+2. Multiplayer Tree Chopping A (Cayden's) [D]
+	Dom: Multiagent Collaboration and Communication, Behavioral Cloning(potentially planning)
+	Desc: 
+		One player starts with bonemeal, and the other with a fixed number of saplings. Both players have axes.
+		The player with saplings must plant the trees, and the player with the bonemeal must grow the trees.
+		Task is completed once a fixed number of trees are planted and chopped.
+		Players spawn on a flat world.
+
+3. Multiplayer Tree Chopping B [D]
+	Dom: Multiagent Collaboration and Communication, Planning, Hierachical Behavioral Cloning
+	Desc: The exact same as Multiplayer Tree Chopping A, except:
+		The players spawn in a small radius on a survival map and must find eachother without using the chat.
+		(The only sensible strategy here is go to a high place and look for eachother).
+	Technical Notes: We need to make sure the map has no trees already. WE also want to idealy disable the chat.
+
+
+4. Building Small Hut Experiment [R, we will actually try and clone this data]
+	Dom: Planning, Hiearchical Behavioral Cloning.
+	Desc: Player spawns on a flat world with a select set of available blocks (let's say 4). 
+		They build a house an the experiment is completed.
+	Technical Notes: We need to ensure that we can run the agent in inference on this map for the video demo using Malmo.
+
+
+5. Extended Planning Experiment [D, just a recording, not an AI solving the task.]
+	Dom: Planning language grounding.
+	Desc: Record player with chat specifying their plan to build a house. Should be a dialogue like this:
+		"I'm going to chop down the birch tree, build a crafting table, build the frame of the birch house, craft a door, ..."
+
+		Player should spawn in a random survival world.
+
+5. Raw Survival Behavioral Cloning. [R]
+	Dom: Everything.
+	Desc: We record players playing survival in the raw. 
+	Technical Note:
+		We need to restrict the action space for the demo or figure out how to record inventory interactiosn for an agent.
+		This pilot data will work well for our demo and for bootstraping agents to play survival on the server.
+		
+6. Two Player Combat [D]
+	Dom: Multiagent Collaboration, Multiagent IRL
+	Desc: Two teams spawn with diamond swards on a map and try and kill eachother.
+
+
+
+
+
+Random Research Thoughts:
+	* How can one integrate reward into expert level imitation learning; that is, can we use imitation to traing 
+	  different reinforcement learning algorithms without jsut pretraining thea ctions of an actor, eg. seeding Q-values.
+	  How is the foregoing thought different than the GAIL or valuie based imitation learning models.
+
+	*  We want an agent to build a house from a picture. Investigate using HER.
+
+	* Potential game mechanic on the server is that humans get to compete with AI on the same task in each minigame (like a house building minigame etc.) 
